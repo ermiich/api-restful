@@ -2,14 +2,24 @@ var { Router } = require("express");
 var router = Router();
 
 const { executeQuery, readTable } = require("./dbConnection");
+const { saveLog } = require("../utils/logs");
+
 const tableName = "students";
+
+function sendError(res, errorContent) {
+	res.status(404).send();
+	console.error(
+		new Date().toLocaleString() +
+			" | Result: 404 - READ LOG " +
+			saveLog(errorContent)
+	);
+}
 
 router.get("/", (req, res) => {
 	console.log(new Date().toLocaleString() + " | GET | " + tableName);
 	readTable(tableName, (error, results) => {
 		if (error) {
-			res.status(404).send();
-			console.log(new Date().toLocaleString() + " | Result: 404 - ERROR");
+			sendError(res, error.errors.toString());
 		} else {
 			res.json(results);
 			console.log(new Date().toLocaleString() + " | Result: 200 - OK");
@@ -26,8 +36,7 @@ router.get("/:id", (req, res) => {
 	const query = "SELECT * FROM " + tableName + " WHERE ID LIKE ?";
 	executeQuery(query, [studentId], (error, results) => {
 		if (error) {
-			res.status(404).send();
-			console.log(new Date().toLocaleString() + " | Result: 404 - ERROR");
+			sendError(res, error.errors.toString());
 		} else {
 			res.json(results);
 			console.log(new Date().toLocaleString() + " | Result: 200 - OK");
@@ -44,8 +53,7 @@ router.delete("/:id", (req, res) => {
 	const query = "DELETE FROM " + tableName + " WHERE ID LIKE ?";
 	executeQuery(query, [studentId], (error, results) => {
 		if (error) {
-			res.status(404).send();
-			console.log(new Date().toLocaleString() + " | Result: 404 - ERROR");
+			sendError(res, error.errors.toString());
 		} else {
 			res.send();
 			console.log(new Date().toLocaleString() + " | Result: 200 - OK");

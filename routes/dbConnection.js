@@ -1,6 +1,5 @@
 // Importación de módulos
 const mysql = require("mysql");
-
 // Función para crear una conexión a la base de datos
 function createConn() {
 	return mysql.createConnection({
@@ -17,7 +16,7 @@ function readTable(tabla, callback) {
 
 	connection.connect((err) => {
 		if (err) {
-			console.error("Error al conectar a la base de datos:", err);
+			//console.error("Error al conectar a la base de datos:", err);
 			callback(err, null);
 			return;
 		}
@@ -26,7 +25,7 @@ function readTable(tabla, callback) {
 		const query = `SELECT * FROM \`${tabla}\`;`;
 		connection.query(query, (err, results) => {
 			if (err) {
-				console.error("Error al ejecutar la consulta:", err);
+				//console.error("Error al ejecutar la consulta:", err);
 				callback(err, null);
 			} else {
 				callback(null, results);
@@ -34,7 +33,7 @@ function readTable(tabla, callback) {
 
 			connection.end((endErr) => {
 				if (endErr) {
-					console.error("Error al cerrar la conexión:", endErr);
+					//console.error("Error al cerrar la conexión:", endErr);
 				} else {
 					//console.log("Conexión cerrada correctamente.");
 				}
@@ -49,7 +48,7 @@ function executeQuery(query, valores, callback) {
 
 	connection.connect((err) => {
 		if (err) {
-			console.error("Error al conectar a la base de datos:", err);
+			//console.error("Error al conectar a la base de datos:", err);
 			callback(err, null);
 			return;
 		}
