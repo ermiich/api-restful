@@ -21,7 +21,7 @@ function readTable(tabla, callback) {
 			callback(err, null);
 			return;
 		}
-		console.log("Conexión exitosa a la base de datos.");
+		//console.log("Conexión exitosa a la base de datos.");
 
 		const query = `SELECT * FROM \`${tabla}\`;`;
 		connection.query(query, (err, results) => {
@@ -36,7 +36,7 @@ function readTable(tabla, callback) {
 				if (endErr) {
 					console.error("Error al cerrar la conexión:", endErr);
 				} else {
-					console.log("Conexión cerrada correctamente.");
+					//console.log("Conexión cerrada correctamente.");
 				}
 			});
 		});
@@ -53,7 +53,7 @@ function executeQuery(query, valores, callback) {
 			callback(err, null);
 			return;
 		}
-		console.log("Conexión exitosa a la base de datos.");
+		//console.log("Conexión exitosa a la base de datos.");
 
 		connection.query(query, valores, (err, results) => {
 			if (err) {
@@ -67,7 +67,7 @@ function executeQuery(query, valores, callback) {
 				if (endErr) {
 					console.error("Error al cerrar la conexión:", endErr);
 				} else {
-					console.log("Conexión cerrada correctamente.");
+					//console.log("Conexión cerrada correctamente.");
 				}
 			});
 		});

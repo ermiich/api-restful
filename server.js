@@ -84,4 +84,5 @@ app.use(express.static("public"));
 
 app.listen(PORT, () => {
 	console.log("El servidor está escuchando en el puerto " + PORT);
+	console.log("=============================================");
 });
