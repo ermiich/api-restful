@@ -1,7 +1,7 @@
 var { Router } = require("express");
 var router = Router();
 
-const { executeQuery, readTable } = require("./dbConnection");
+const { executeQuery, readTable } = require("../utils/dbConnection");
 const { saveLog } = require("../utils/logs");
 
 const tableName = "students";
@@ -36,6 +36,7 @@ router.get("/:id", (req, res) => {
 	const query = "SELECT * FROM " + tableName + " WHERE ID LIKE ?";
 	executeQuery(query, [studentId], (error, results) => {
 		if (error) {
+			console.log(error);
 			sendError(res, error.errors.toString());
 		} else {
 			res.json(results);
@@ -74,8 +75,7 @@ router.post("/", (req, res) => {
 			[newStudent.name, newStudent.email],
 			(error, results) => {
 				if (error) {
-					res.status(404).send();
-					console.log(new Date().toLocaleString() + " | Result: 404 - ERROR");
+					sendError(res, error.errors.toString());
 				} else {
 					console.log(new Date().toLocaleString() + " | Result: 200 - OK");
 					res.send();

@@ -2,12 +2,8 @@
 const mysql = require("mysql");
 // Función para crear una conexión a la base de datos
 function createConn() {
-	return mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "",
-		database: "school_db",
-	});
+	const dbConfig = require("./dbconfig");
+	return mysql.createConnection(dbConfig);
 }
 
 // Función para leer datos de una tabla
