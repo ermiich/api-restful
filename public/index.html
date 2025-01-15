@@ -4,8 +4,53 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/card.css" />
 	</head>
 	<body>
-		<h1>p</h1>
+		<main>
+			<dialog id="dialog-edit">
+				<form method="dialog">
+					<section>
+						<p>
+							<label for="dialogName">Nombre:</label>
+							<input
+								class="dialog-edit-name"
+								name="dialogName"
+								type="text"
+								placeholder="no"
+							/>
+						</p>
+						<p>
+							<label for="dialogName">E-mail:</label>
+							<input
+								class="dialog-edit-mail"
+								name="dialogName"
+								type="text"
+								placeholder="mail"
+							/>
+						</p>
+					</section>
+					<menu>
+						<button type="submit">CANCELAR</button>
+						<button type="submit" onclick="closeEditModal()">CONFIRMAR</button>
+					</menu>
+				</form>
+			</dialog>
+
+			<section class="container-students">
+				<div class="card-student" value="1">
+					<div class="card-title">Una tarjeta básica</div>
+					<div class="card-body">lorem ipsum</div>
+					<div class="card-buttons">
+						<button class="card-btn-edit">EDITAR</button>
+						<button class="card-btn-delete">ELIMINAR</button>
+					</div>
+				</div>
+			</section>
+		</main>
+		<script src="./js/components/card.js"></script>
+		<script src="./js/index.js"></script>
+		<script src="./js/components/dialogs.js"></script>
 	</body>
 </html>

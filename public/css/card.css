@@ -1,0 +1,65 @@
+.container-students {
+	padding: 5%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 80vh;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 20px 10px;
+}
+.card-student {
+	text-align: center;
+
+	color: #ecdfcc;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 250px;
+	min-width: 150px;
+
+	max-height: 200px;
+	min-height: 150px;
+	border: 1px solid #3c3d37;
+	box-shadow: 0px 3px 6px 1px #3e3e3e;
+	border-radius: 15px;
+	transition: transform .2s;
+}
+.card-student:hover{
+	transform: scale(1.02);
+}
+.card-title {
+	color: #ecdfcc;
+	font-weight: 900;
+	font-size: 24px;
+	padding: 10px 10px 0 10px;
+}
+.card-body {
+	padding: 10px;
+}
+.card-buttons {
+	border-radius: 0 0 15px 15px;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	overflow: hidden;
+	button {
+		width: 50%;
+		border: none;
+		font-weight: bold;
+		color: black;
+	}
+}
+.card-btn-edit {
+	background-color: green;
+}
+.card-btn-delete {
+	background-color: red;
+}
+
+button{
+	cursor: pointer;
+}

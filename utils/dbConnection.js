@@ -52,7 +52,7 @@ function executeQuery(query, valores, callback) {
 
 		connection.query(query, valores, (err, results) => {
 			if (err) {
-				console.error("Error al ejecutar la consulta:", err);
+				//console.error("Error al ejecutar la consulta:", err);
 				callback(err, null);
 			} else {
 				callback(null, results);
@@ -60,7 +60,7 @@ function executeQuery(query, valores, callback) {
 
 			connection.end((endErr) => {
 				if (endErr) {
-					console.error("Error al cerrar la conexión:", endErr);
+					//console.error("Error al cerrar la conexión:", endErr);
 				} else {
 					//console.log("Conexión cerrada correctamente.");
 				}
